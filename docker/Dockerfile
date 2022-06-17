@@ -4,15 +4,19 @@ RUN apk --no-cache add \
         $PHPIZE_DEPS \
         curl \
         git \
-        zsh \
+        icu-dev \
+        less \
+        libzip-dev \
+        nano \
         openssh-client \
         supervisor \
         sudo \
-        less \
         vim \
-        nano \
-        libzip-dev \
-    && docker-php-ext-install -j5 zip pcntl \
+        zsh \
+    && docker-php-ext-install -j5 \
+        intl \
+        pcntl \
+        zip \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
